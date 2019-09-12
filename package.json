@@ -1,8 +1,59 @@
 {
   "name": "create-eva-app",
+  "description": "Set up an Eva-Ready web or mobile app by running one command",
   "version": "0.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:eva-tech/create-eva-app.git",
-  "author": "Enrique Benitez <hello@bntz.io>",
-  "license": "MIT"
+  "author": "Enrique Benitez @bntzio",
+  "bin": {
+    "create-eva-app": "./bin/run"
+  },
+  "bugs": "https://github.com/eva-tech/create-eva-app/issues",
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^2",
+    "tslib": "^1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@oclif/test": "^1",
+    "@types/chai": "^4",
+    "@types/mocha": "^5",
+    "@types/node": "^10",
+    "chai": "^4",
+    "globby": "^10",
+    "mocha": "^5",
+    "nyc": "^13",
+    "ts-node": "^8",
+    "typescript": "^3.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/eva-tech/create-eva-app",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "create-eva-app",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "eva-tech/create-eva-app",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
 }
