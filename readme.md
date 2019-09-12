@@ -1,5 +1,4 @@
-create-eva-app
-==============
+# create-eva-app
 
 Set up an Eva-Ready web or mobile app by running one command 💖
 
@@ -10,11 +9,15 @@ Set up an Eva-Ready web or mobile app by running one command 💖
 [![License](https://img.shields.io/npm/l/create-eva-app.svg)](https://github.com/eva-tech/create-eva-app/blob/master/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
+
+- [Usage](#usage)
+- [Commands](#commands)
+  <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g create-eva-app
 $ create-eva-app COMMAND
@@ -26,11 +29,15 @@ USAGE
   $ create-eva-app COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
-* [`create-eva-app hello [FILE]`](#create-eva-app-hello-file)
-* [`create-eva-app help [COMMAND]`](#create-eva-app-help-command)
+
+- [`create-eva-app hello [FILE]`](#create-eva-app-hello-file)
+- [`create-eva-app help [COMMAND]`](#create-eva-app-help-command)
 
 ## `create-eva-app hello [FILE]`
 
@@ -68,4 +75,5 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.1/src/commands/help.ts)_
+
 <!-- commandsstop -->
