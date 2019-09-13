@@ -1,15 +1,11 @@
 import { Command, flags } from '@oclif/command'
 
-export default class Hello extends Command {
+class CreateEvaApp extends Command {
   static description = 'describe the command here'
 
-  static examples = [
-    `$ create-eva-app hello
-hello world from ./src/hello.ts!
-`
-  ]
-
   static flags = {
+    // add --version flag to show CLI version
+    version: flags.version({ char: 'v' }),
     help: flags.help({ char: 'h' }),
     // flag with a value (-n, --name=VALUE)
     name: flags.string({ char: 'n', description: 'name to print' }),
@@ -20,12 +16,17 @@ hello world from ./src/hello.ts!
   static args = [{ name: 'file' }]
 
   async run() {
-    const { args, flags } = this.parse(Hello)
+    const {
+      args: { file },
+      flags: { force }
+    } = this.parse(CreateEvaApp)
 
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from ./src/commands/hello.ts`)
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
+    this.log(`\nCreating project... Done!\n\n`)
+
+    if (file && force) {
+      this.log(`you input --force and --file: ${file}`)
     }
   }
 }
+
+export = CreateEvaApp

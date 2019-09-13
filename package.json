@@ -1,27 +1,12 @@
 {
-  "name": "create-eva-app",
-  "description": "Set up an Eva-Ready web or mobile app by running one command",
-  "version": "0.0.0",
-  "author": "Enrique Benitez @bntzio",
-  "bin": {
-    "create-eva-app": "./bin/run"
-  },
-  "bugs": "https://github.com/eva-tech/create-eva-app/issues",
-  "dependencies": {
-    "@oclif/command": "^1",
-    "@oclif/config": "^1",
-    "@oclif/plugin-help": "^2",
-    "tslib": "^1"
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "create-eva-app": "lerna run create-eva-app"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1",
-    "@oclif/test": "^1",
-    "@types/chai": "^4",
-    "@types/mocha": "^5",
-    "@types/node": "^10",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
-    "chai": "^4",
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-config-standard": "^14.1.0",
@@ -30,41 +15,8 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "globby": "^10",
-    "mocha": "^5",
-    "nyc": "^13",
+    "lerna": "^3.16.4",
     "prettier": "^1.18.2",
-    "ts-node": "^8",
-    "typescript": "^3.3"
-  },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "files": [
-    "/bin",
-    "/lib",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json"
-  ],
-  "homepage": "https://github.com/eva-tech/create-eva-app",
-  "keywords": [
-    "oclif"
-  ],
-  "license": "MIT",
-  "main": "lib/index.js",
-  "oclif": {
-    "commands": "./lib/commands",
-    "bin": "create-eva-app",
-    "plugins": [
-      "@oclif/plugin-help"
-    ]
-  },
-  "repository": "eva-tech/create-eva-app",
-  "scripts": {
-    "postpack": "rm -f oclif.manifest.json",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif-dev readme && git add README.md"
-  },
-  "types": "lib/index.d.ts"
+    "typescript": "^3.6.3"
+  }
 }
