@@ -1,10 +1,6 @@
 import { Command, flags } from '@oclif/command'
 
-import clone from './scripts/clone'
-
-const path = require('path')
-const fs = require('fs-extra')
-const hostedGitInfo = require('hosted-git-info')
+import * as prompts from './prompts'
 
 class CreateEvaApp extends Command {
   static description = 'describe the command here'
@@ -16,17 +12,15 @@ class CreateEvaApp extends Command {
   }
 
   async run() {
-    this.log(`\nCreating project...\n\n`)
+    this.log(`\nWelcome to CEA (create-eva-app) 😎\n\n`)
 
-    const installPath: string = path.join(process.cwd(), './root')
-    await fs.removeSync(installPath)
-
-    const remoteRepoPath = 'eva-tech/eva-react-app'
-    const hostedInfo = hostedGitInfo.fromUrl(remoteRepoPath)
-
-    await clone(hostedInfo, installPath)
-
-    this.log(`\nDone!\n\n`)
+    try {
+      const { name } = await prompts.name()
+      await prompts.clone(name)
+      this.log(`\nDone! 💖😄 Thx for using CEA, see ya later 👋\n\n`)
+    } catch (err) {
+      this.log(`\nError! 😬 ${err}`)
+    }
   }
 }
 
