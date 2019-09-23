@@ -63,7 +63,7 @@
   "scripts": {
     "prepack": "rm -rf lib && tsc -b",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "create-eva-app": "./bin/run"
+    "start": "./bin/run"
   },
   "types": "lib/index.d.ts"
 }
