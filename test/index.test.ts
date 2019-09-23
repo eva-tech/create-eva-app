@@ -1,34 +1,35 @@
 import 'mocha'
 
-import copy from './../src/scripts/copy'
+import clone from './../src/scripts/clone'
 
-const fs = require('fs')
+const fs = require('fs-extra')
 const path = require('path')
-const mock = require('mock-fs')
 const expect = require('chai').expect
+const hostedGitInfo = require('hosted-git-info')
 
 describe('create-eva-app', () => {
-  beforeEach(() => {
-    mock({
-      'projects/node_modules/@eva-tech/eva-react-app': {
-        'readme.md': '# eva-react-app',
-        'index.js': '// eva-react-app'
-      }
-    })
+  const installPath = path.join(process.cwd(), './test/app')
+
+  beforeEach(async function() {
+    this.timeout(20000)
+    await fs.removeSync(installPath)
+
+    const remoteRepoPath = 'eva-tech/eva-react-app'
+    const hostedInfo = hostedGitInfo.fromUrl(remoteRepoPath)
+
+    try {
+      await clone(hostedInfo, installPath)
+    } catch (e) {
+      console.log(e)
+    }
   })
 
-  afterEach(() => mock.restore())
+  afterEach(async () => {
+    await fs.removeSync(installPath)
+  })
 
-  it('should copy a local repository', async () => {
-    const installPath = path.join(process.cwd(), './projects')
-    const localRepoPath = path.join(process.cwd(), './projects/node_modules/@eva-tech/eva-react-app')
-
-    await copy(localRepoPath, installPath)
-
-    const readme = fs.readFileSync(path.join(installPath, './readme.md')).toString()
+  it('should clone a remote repository', async () => {
     const file = fs.readFileSync(path.join(installPath, './index.js')).toString()
-
-    expect(readme).to.equal(`# eva-react-app`)
-    expect(file).to.equal(`// eva-react-app`)
+    expect(file).to.equal(`// eva-react-app\n`)
   })
 })
