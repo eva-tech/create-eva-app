@@ -1,7 +1,7 @@
 {
   "name": "create-eva-app",
   "description": "Set up an Eva-Ready web or mobile app by running one command",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "Enrique Benitez @bntzio",
   "bin": {
     "create-eva-app": "./bin/run"
