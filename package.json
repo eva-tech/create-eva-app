@@ -2,7 +2,10 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "create-eva-app": "lerna run create-eva-app"
+    "clean": "lerna clean",
+    "bootstrap": "lerna bootstrap",
+    "create-eva-app": "lerna run create-eva-app",
+    "test": "lerna run test"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.2.0",

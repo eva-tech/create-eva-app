@@ -8,6 +8,7 @@
   },
   "bugs": "https://github.com/eva-tech/create-eva-app/issues",
   "dependencies": {
+    "@eva-tech/eva-react-app": "*",
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^2",

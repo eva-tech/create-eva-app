@@ -1,31 +1,29 @@
 import { Command, flags } from '@oclif/command'
 
+import copy from './scripts/copy'
+
+const path = require('path')
+const fs = require('fs-extra')
+
 class CreateEvaApp extends Command {
   static description = 'describe the command here'
 
   static flags = {
-    // add --version flag to show CLI version
-    version: flags.version({ char: 'v' }),
     help: flags.help({ char: 'h' }),
-    // flag with a value (-n, --name=VALUE)
-    name: flags.string({ char: 'n', description: 'name to print' }),
-    // flag with no value (-f, --force)
+    version: flags.version({ char: 'v' }),
     force: flags.boolean({ char: 'f' })
   }
 
-  static args = [{ name: 'file' }]
-
   async run() {
-    const {
-      args: { file },
-      flags: { force }
-    } = this.parse(CreateEvaApp)
+    this.log(`\nCreating project...\n\n`)
 
-    this.log(`\nCreating project... Done!\n\n`)
+    const installPath: string = path.join(process.cwd(), './root')
+    await fs.removeSync(installPath)
 
-    if (file && force) {
-      this.log(`you input --force and --file: ${file}`)
-    }
+    const localRepoPath: string = path.join(process.cwd(), './node_modules/@eva-tech/eva-react-app')
+    await copy(localRepoPath, installPath, true)
+
+    this.log(`\nDone!\n\n`)
   }
 }
 
